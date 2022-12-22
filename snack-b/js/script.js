@@ -15,14 +15,23 @@ const { createApp } = Vue
         },
         methods : {
             getSum(){
-                axios.get(`https://flynn.boolean.careers/exercises/api/array/integers?min=1&max=100&items=${this.userInputNumber}`)
-                .then( (result) => {
-                    const numbers = result.data.response;
-                    for (let index = 0; index < numbers.length; index++) {
-                        this.sum += numbers[index];
-                    }
-                })
+                if (this.userInputNumber > 1 && this.userInputNumber < 100) {
+                    axios.get(`https://flynn.boolean.careers/exercises/api/array/integers?min=1&max=100&items=${this.userInputNumber}`)
+                    .then( (result) => {
+                        const numbers = result.data.response;
+                        for (let index = 0; index < numbers.length; index++) {
+                            this.sum += numbers[index];
+                        }
+                        console.log(numbers)
+                    })
+                } else {
+                    alert('Inserisci un numero nel range richiesto!!')
+                }
             },
+            resetAll(){
+                this.sum = 0;
+                this.userInputNumber = null;
+            }
         },
         mounted(){
         }
