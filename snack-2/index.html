@@ -15,10 +15,14 @@
     <body>
         <div id="app">
             <div class="col-12">
-                <input type="text" id="name" placeholder="Inserisci il tuo nome" v-model.trim="userName.toLowerCase()">
+                <input type="text" id="name" placeholder="Inserisci il tuo nome" v-model.trim="userName">
+                <a href="##" class="btn btn-primary" @click="isInList(userName)">Cliccami</a>
             </div>
             <div class="col-12">
-                <p v-if="nameList.includes(userName)">Accesso Consentito</p>
+                <ul>
+                    <li v-for="name in nameList">{{name}}</li>
+                </ul>
+                <p v-if="isNameList">Accesso Consentito, benvenuto {{userName}}</p>
                 <p v-else>Accesso negato</p>
             </div> 
         </div>

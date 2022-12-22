@@ -13,6 +13,7 @@ const { createApp } = Vue
             return {
                 nameList : [],
                 userName : '',
+                isNameList : false,
             }
         },
         methods : {
@@ -20,10 +21,13 @@ const { createApp } = Vue
                 for (let index = 0; index < 10; index++) {
                     axios.get('https://flynn.boolean.careers/exercises/api/random/name')
                     .then( (response) => {
-                        this.nameList.push(response.data.response.toLowerCase());
+                        this.nameList.push(response.data.response);
                     })
                 }
             },
+            isInList(name){
+                this.isNameList = this.nameList.includes(name);
+            }
         },
         mounted(){
             this.getRandomName()
