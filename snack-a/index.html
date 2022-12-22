@@ -21,7 +21,7 @@
                     <div class="row justify-content-center">
                         <div class="col-8">
                             <div class="chat">
-                                <div class="chat-cloud sent" v-for="message in messageList">{{message}}</div>
+                                <div class="chat-cloud" v-for="content in messageList" :class="content.status">{{content.message}}</div>
                             </div>
                             <div class="chat-text">
                                 <a href="#" class="btn">

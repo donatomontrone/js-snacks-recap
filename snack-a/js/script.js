@@ -11,18 +11,27 @@ const { createApp } = Vue
             return {
                 inputMessage : '',
                 messageList : [],
+                replyMessage : '',
             }
         },
         methods : {
             addNewMessage(){
                 if (this.inputMessage != ''){
-                    this.messageList.push(this.inputMessage);            
+                    this.messageList.push({message : this.inputMessage, status: 'sent' });
+                    this.setReply()            
                 }
                 this.clearInputMessage();
             },
             clearInputMessage(){
                 this.inputMessage = '';
-            }
+            },
+            setReply(){
+                axios.get('https://flynn.boolean.careers/exercises/api/random/sentence')
+                .then( (result) => {
+                        this.replyMessage = result.data.response;
+                        this.messageList.push({message : this.replyMessage, status : 'received'})
+                })
+            },
         },
         mounted(){
         }

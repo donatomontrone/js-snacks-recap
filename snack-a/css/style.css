@@ -1,17 +1,17 @@
 div.chat{
-    min-height: 500px;
+    height:70vh;
     background-color: beige;
     width: 100%;
     background-position: center;
-    height: calc(100% - 113px);
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 div.chat-text{
-    height: 60px;
+    height: 8vh;
     background-color: lightgray;
     display: flex;
     justify-content: space-between;
