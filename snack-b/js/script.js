@@ -15,7 +15,7 @@ const { createApp } = Vue
         },
         methods : {
             getSum(){
-                if (this.userInputNumber > 1 && this.userInputNumber < 100) {
+                if (this.userInputNumber > 1 && this.userInputNumber <= 100) {
                     axios.get(`https://flynn.boolean.careers/exercises/api/array/integers?min=1&max=100&items=${this.userInputNumber}`)
                     .then( (result) => {
                         const numbers = result.data.response;
